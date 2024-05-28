@@ -1,27 +1,23 @@
 package main
 
-import (
-	"fmt"
-	"reflect"
-)
+import "fmt"
 
 func main() { //Entry point in application
-	//Initialization and assignment value of variable
-	message1 := "Hello, GO!" //variable := "something"
+	//var message string
+	//var number int
+	//var unumber uint
+	//var fnumber float32
+	//var isFalse bool
+	byteArray := []byte("asd")
+	var a byte = 97
+	var convertRune rune = 'a'
 
-	message2 := ""
-	// Assign value
-	message2 = "Hello, Golang!"
-
-	var message3 string
-	message3 = "Hello, Golang!"
-
-	// Initialization
-	var num int
-	fmt.Println(reflect.TypeOf(num))
-	//Constant variable
-	const Pi float64 = 3.1415926
-	const name = "Sanzhar"
-	fmt.Println(Pi)
-	fmt.Println(message1, message2, message3)
+	fmt.Printf("%c\n", a)
+	fmt.Println(convertRune)
+	fmt.Println(byteArray)
+	//fmt.Println(message)
+	//fmt.Println(number)
+	//fmt.Println(unumber)
+	//fmt.Println(fnumber)
+	//fmt.Println(isFalse)
 }
