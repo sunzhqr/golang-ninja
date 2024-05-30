@@ -3,11 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	print()
-	print()
-	print()
+	printMessage("SSSSS")
+	printMessage("AAAAA")
+	printMessage("RRRRR")
 }
 
-func print() {
-	fmt.Println("print() function")
+func printMessage(message string) {
+	fmt.Println(message)
 }
