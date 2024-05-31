@@ -3,11 +3,16 @@ package main
 import "fmt"
 
 func main() {
-	printMessage("SSSSS")
-	printMessage("AAAAA")
-	printMessage("RRRRR")
+	message, _ := enterTheClub(17)
+	fmt.Println(message)
+	//fmt.Println(entered)
+	//fmt.Println(enterTheClub(17))
 }
 
-func printMessage(message string) {
-	fmt.Println(message)
+func enterTheClub(age int) (string, bool) {
+	if age >= 18 {
+		return "You accepted a club!", true
+	} else {
+		return "You cannot enter to the Club(", false
+	}
 }
