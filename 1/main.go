@@ -3,17 +3,15 @@ package main
 import (
 	"errors"
 	"fmt"
-	"log"
 )
 
 func main() {
-	message, err := enterTheClub(27)
-
+	response, err := predictionForAbylay("Saturday")
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println("Error", "WTF, you can't enter the day of Week?")
+	} else {
+		fmt.Println(response)
 	}
-
-	fmt.Println(message)
 }
 
 func enterTheClub(age int) (string, error) {
@@ -25,4 +23,25 @@ func enterTheClub(age int) (string, error) {
 		return "Not for you!", errors.New("you are too old!")
 	}
 	return "You cannot enter to the Club(", errors.New("you are too young!")
+}
+
+func predictionForAbylay(dayOfWeek string) (string, error) {
+	switch dayOfWeek {
+	case "Monday":
+		return "Statistics fx", nil
+	case "Tuesday":
+		return "", nil
+	case "Wednesday":
+		return "Academic fx", nil
+	case "Thursday":
+		return "AP fx", nil
+	case "Friday":
+		return "Alem exam lose", nil
+	case "Saturday":
+		return "Military double dive into Abylay", nil
+	case "Sunday":
+		return "Othodnyak", nil
+	default:
+		return "Abylay wins", errors.New("Err")
+	}
 }
