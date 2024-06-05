@@ -3,20 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println(findMin(1, 2, 3, 1, -65, 4, 64, 5, 453, 1, 351, 1, 531, 5))
-}
-
-func findMin(numbers ...int) int {
-	if len(numbers) == 0 {
-		return 0
-	}
-
-	min := numbers[0]
-
-	for _, i := range numbers {
-		if i < min {
-			min = i
-		}
-	}
-	return min
+	func() {
+		fmt.Println("Anonymous function")
+	}()
 }
