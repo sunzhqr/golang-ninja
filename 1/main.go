@@ -3,24 +3,32 @@ package main
 import "fmt"
 
 func main() {
-	defer handlePanic()
-
-	friends := []string{
-		"Abylay",
-		"Aigali",
-		"Nur-Assyl",
+	users := map[string]int{
+		"Sanzhar":   19,
+		"Abylay":    19,
+		"Nur-Assyl": 20,
 	}
-	fmt.Println("before panic")
-	fmt.Println(friends)
-	friends[3] = "Tamerlan"
-	fmt.Println(friends)       // not showed
-	fmt.Println("after panic") //not showed
+
+	AigaliExists(users)
+	users["Aigali"] = 19
+	AigaliExists(users)
+
+	fmt.Println("Before: ", len(users))
+
+	for k, v := range users {
+		fmt.Printf("%s, %d deleted!\n", k, v)
+		delete(users, k)
+	}
+
+	fmt.Println("After: ", len(users))
 
 }
 
-func handlePanic() {
-	if r := recover(); r != nil {
-		fmt.Println(r)
+func AigaliExists(users map[string]int) {
+	age, exists := users["Aigali"]
+	if exists {
+		fmt.Println("Aigali", age)
+	} else {
+		fmt.Println("Where is Aigali??!")
 	}
-	fmt.Println("Panic handled succesfully!")
 }
