@@ -2,9 +2,16 @@ package main
 
 import "fmt"
 
+type Age int
+
+// Custom Type
+func (a Age) isAdult() bool {
+	return a >= 18
+}
+
 type User struct {
 	name   string
-	age    int
+	age    Age
 	gender string
 }
 
@@ -19,7 +26,7 @@ func (u *User) setName(name string) {
 	u.name = name
 }
 
-func NewUser(name, gender string, age int) User {
+func NewUser(name, gender string, age Age) User {
 	return User{
 		name:   name,
 		age:    age,
@@ -29,12 +36,13 @@ func NewUser(name, gender string, age int) User {
 
 func main() {
 	user1 := NewUser("Sanzhar", "Male", 19)
-	user2 := User{"Aigali", 19, "Male"}
+	user2 := User{"Aigali", 17, "Male"}
 	user1.getName()
 	user2.getName()
 	user1.setName("Example1")
 	user2.setName("Example2")
 	user1.getName()
 	user2.getName()
-	fmt.Println(user1)
+	fmt.Println(user1.age.isAdult())
+	fmt.Println(user2.age.isAdult())
 }
