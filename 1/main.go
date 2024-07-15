@@ -2,47 +2,44 @@ package main
 
 import "fmt"
 
-type Age int
-
-// Custom Type
-func (a Age) isAdult() bool {
-	return a >= 18
+type Numbers struct {
+	num1 int
+	num2 int
 }
 
-type User struct {
-	name   string
-	age    Age
-	gender string
+func (n Numbers) Sum() int {
+	return n.num1 + n.num2
 }
 
-// Value Receiver or Getter
-func (u User) getName() string {
-	fmt.Println(u.name)
-	return u.name
+func (n Numbers) Subtract() int {
+	return n.num1 - n.num2
 }
 
-// Pointer Receiver or Setter
-func (u *User) setName(name string) {
-	u.name = name
+func (n Numbers) Multiply() int {
+	return n.num1 * n.num2
 }
 
-func NewUser(name, gender string, age Age) User {
-	return User{
-		name:   name,
-		age:    age,
-		gender: gender,
+func (n Numbers) Division() float32 {
+	if n.num2 != 0 {
+		return float32(n.num1 / n.num2)
 	}
+	return 0
+}
+
+type NumbersInterface interface {
+	Sum() int
+	Subtract() int
+	Multiply() int
+	Division() float32
 }
 
 func main() {
-	user1 := NewUser("Sanzhar", "Male", 19)
-	user2 := User{"Aigali", 17, "Male"}
-	user1.getName()
-	user2.getName()
-	user1.setName("Example1")
-	user2.setName("Example2")
-	user1.getName()
-	user2.getName()
-	fmt.Println(user1.age.isAdult())
-	fmt.Println(user2.age.isAdult())
+	var i NumbersInterface
+	nums1 := Numbers{10, 0}
+	//nums2 := Numbers{10, 0}
+	i = nums1
+	fmt.Println("Sum", i.Sum())
+	fmt.Println("Subtract", i.Subtract())
+	fmt.Println("Multiply", i.Multiply())
+	fmt.Println("Division", i.Division())
 }
