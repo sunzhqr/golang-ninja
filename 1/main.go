@@ -1,45 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math"
+)
 
-type Numbers struct {
-	num1 int
-	num2 int
+type Shape interface {
+	Area() float32
 }
 
-func (n Numbers) Sum() int {
-	return n.num1 + n.num2
+type Square struct {
+	sideLength float32
 }
 
-func (n Numbers) Subtract() int {
-	return n.num1 - n.num2
+func (s Square) Area() float32 {
+	return s.sideLength * s.sideLength
 }
 
-func (n Numbers) Multiply() int {
-	return n.num1 * n.num2
+type Circle struct {
+	radius float32
 }
 
-func (n Numbers) Division() float32 {
-	if n.num2 != 0 {
-		return float32(n.num1 / n.num2)
-	}
-	return 0
-}
-
-type NumbersInterface interface {
-	Sum() int
-	Subtract() int
-	Multiply() int
-	Division() float32
+func (c Circle) Area() float32 {
+	return c.radius * c.radius * math.Pi
 }
 
 func main() {
-	var i NumbersInterface
-	nums1 := Numbers{10, 0}
-	//nums2 := Numbers{10, 0}
-	i = nums1
-	fmt.Println("Sum", i.Sum())
-	fmt.Println("Subtract", i.Subtract())
-	fmt.Println("Multiply", i.Multiply())
-	fmt.Println("Division", i.Division())
+	square := Square{5}
+	circle := Circle{5}
+	printArea(square)
+	printArea(circle)
+}
+
+func printArea(shape Shape) {
+	fmt.Println(shape.Area())
 }
